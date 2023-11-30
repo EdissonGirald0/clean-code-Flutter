@@ -6,7 +6,7 @@ import '../../domain/repositories/authentication_repository.dart';
 class AuthenticationRepositoryImp implements AuthenticationRepository {
   // Método para obtener datos del usuario
   @override
-  Future<User> getUserData() {
+  Future<User?> getUserData() {
     // Devuelve un usuario vacío de manera sincrónica
     return Future.value(User());
   }

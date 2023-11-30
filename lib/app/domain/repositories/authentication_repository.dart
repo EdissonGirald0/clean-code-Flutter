@@ -7,5 +7,5 @@ abstract class AuthenticationRepository {
   Future<bool> get isSignedIn;
 
   // Método para obtener datos del usuario
-  Future<User> getUserData();
+  Future<User?> getUserData();
 }

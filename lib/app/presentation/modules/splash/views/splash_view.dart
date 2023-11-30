@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../main.dart';
+import '../../../routes/routes.dart';
 
 // Vista de inicio (Splash)
 class SplashView extends StatefulWidget {
@@ -38,12 +39,27 @@ class _SplashViewState extends State<SplashView> {
 
       if (isSignedIn) {
         // Si el usuario está autenticado, realizar acciones adicionales aquí
-      } else {
+        final user = await authenticationRepository.getUserData();
+        if (mounted) {
+          // renderiza home
+          if (user != null) {
+            //home
+            _goTo(Routes.home);
+          } else {
+            _goTo(Routes.signIn);
+          }
+        }
+      } else if (mounted) {
         // Si el usuario no está autenticado, realizar acciones adicionales aquí
+        _goTo(Routes.signIn);
       }
     } else {
       // Si no hay conexión a Internet, realizar acciones adicionales aquí
     }
+  }
+
+  void _goTo(String routeName) {
+    Navigator.pushReplacementNamed(context, routeName);
   }
 
   @override

@@ -2,8 +2,9 @@
 class Routes {
   // Constructor privado para evitar instancias accidentales
   Routes._();
-
+  // Puedes agregar más rutas aquí según sea necesario
   // Ruta para la vista de inicio (Splash)
   static const splash = '/splash';
-  // Puedes agregar más rutas aquí según sea necesario
+  static const signIn = '/sign-in';
+  static const home = '/home';
 }

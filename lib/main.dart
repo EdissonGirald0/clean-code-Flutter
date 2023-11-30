@@ -1,12 +1,14 @@
 // Importaciones necesarias
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones de las implementaciones de repositorios
 import 'app/data/repository_implementation/authentication_repository_imp.dart';
 import 'app/data/repository_implementation/connectivity_repository_imp.dart';
 // Importaciones de las definiciones de repositorios
+import 'app/data/services/remote/internet_checker.dart';
 import 'app/domain/repositories/authentication_repository.dart';
-import 'app/domain/repositories/connetivity_repository.dart';
+import 'app/domain/repositories/connectivity_repository.dart';
 // Importación de la clase principal de la aplicación
 import 'app/my_app.dart';
 
@@ -16,7 +18,10 @@ void main(List<String> args) {
   runApp(
     Injector(
       // Configuración de los repositorios a través del inyector
-      connectivityRepository: ConnectivityRepositoryImpl(),
+      connectivityRepository: ConnectivityRepositoryImpl(
+        Connectivity(),
+        InternetChecker(),
+      ),
       authenticationRepository: AuthenticationRepositoryImp(),
 
       // Widget principal de la aplicación
